@@ -3,7 +3,6 @@ const fs = require('fs');
 
 const json = require('./categoryMapping.json');
 
-const valuableRows = [11, 14, 1, 9];
 const categories = Object.entries(json.categories)
     .reduce((acc, [categoryNumber, values]) => {
         values.forEach(tinkCategoryName => {
@@ -15,7 +14,7 @@ const categories = Object.entries(json.categories)
 
 const workSheetsFromFile = xlsx.parse(`${__dirname}/${json.parsingFileRelativePath}`);
 const { data } = workSheetsFromFile[0];
-const newTable = data.map(row => valuableRows.map(rowInd => row[rowInd]))
+const newTable = data.map(row => json.valuableRows.map(rowInd => row[rowInd]))
     .filter(row => row[row.length - 1])
     .filter(row => !json.useless[row[row.length - 1]])
     .map(row => row.map((cell, i) => i === row.length - 1 ? categories[cell] : cell))

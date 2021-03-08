@@ -16,5 +16,6 @@
         "Переводы/иб": true
     },
     "parsingFileRelativePath": "operations.xls",
-    "outputFileName": "result.xls"
+    "outputFileName": "result.xls",
+    "valuableRows": [11, 14, 1, 9]
 }
