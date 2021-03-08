@@ -14,5 +14,7 @@
     "useless": {
         "Финан. услуги": true,
         "Переводы/иб": true
-    }
+    },
+    "parsingFileRelativePath": "operations.xls",
+    "outputFileName": "result.xls"
 }

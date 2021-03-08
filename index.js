@@ -13,7 +13,7 @@ const categories = Object.entries(json.categories)
         return acc;
     }, {});
 
-const workSheetsFromFile = xlsx.parse(`${__dirname}/operations.xls`);
+const workSheetsFromFile = xlsx.parse(`${__dirname}/${json.parsingFileRelativePath}`);
 const { data } = workSheetsFromFile[0];
 const newTable = data.map(row => valuableRows.map(rowInd => row[rowInd]))
     .filter(row => row[row.length - 1])
@@ -22,7 +22,7 @@ const newTable = data.map(row => valuableRows.map(rowInd => row[rowInd]))
 
 const bin = xlsx.build([{ name: '', data: newTable }]);
 
-fs.writeFile('result.xls', bin,  'binary', (err) => {
+fs.writeFile(json.outputFileName, bin,  'binary', (err) => {
     if (err) {
         console.log(err);
         console.log('The file was not saved!');
